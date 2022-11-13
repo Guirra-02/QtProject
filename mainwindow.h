@@ -46,6 +46,12 @@ private slots:
 
     void on_eliminer_clicked();
 
+    void on_pushButton_modifier_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
+
 private:
     Ui::MainWindow *ui;
     Avocat a;

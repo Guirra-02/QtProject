@@ -10,6 +10,8 @@ class Avocat
 {private : QString nom,prenom,id;
 public:
    QSqlQueryModel *  affichageASC();
+   QSqlQueryModel *  affichageDSC();
+
     QString  getnom(){return  nom;}
    QString  getprenom(){return  prenom;}
    QString  getid(){return  id;}

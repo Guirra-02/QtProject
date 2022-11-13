@@ -7,7 +7,8 @@
 #include <QtDebug>
 #include <QPainter>
 #include <QFile>
-
+#include <QPrinter>
+#include <QPrintDialog>
 #include <QPdfWriter>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -136,23 +137,29 @@ void MainWindow::on_pushButton_modifier_clicked()
 }
 
 void MainWindow::on_pushButton_8_clicked()
-{QSqlQuery q;
-    QString id,prenom,nom;
-    q.exec("select * FROM AVOCATS " );
-    id=q.value("ID_AVOCAT").toString();
-    prenom=q.value("PRENOM").toString();
-    nom=q.value("NOM").toString();
+{QSqlQueryModel *q=new QSqlQueryModel();;
+    QPrinter print;
+    print.setPrinterName("Printer name ");
+    QPrintDialog printdialog(&print,this);
+    if (printdialog.exec()==QDialog::Rejected)
+     return;
 
-      //QString numtel=ui->space_description_office->text();
+    QString id,prenom,nom;
+
+
+id=ui->identifiant->text();
+prenom=ui->prenom->text();
+nom=ui->nom->text();
+//QString numtel=ui->space_description_office->text();
      // QString audiance=ui->position_description_office->text();
 
-      QFile file("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/"+nom+" "+id+""".pdf");
-      QPdfWriter pdf("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/"+nom+" "+id+".pdf");
+      QFile file("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/""Avocats """".pdf");
+      QPdfWriter pdf("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/""Avocats"""".pdf");
       QPainter painter(&pdf);
       painter.setPen(Qt::black);
-      painter.drawText(3500,1000,"ID_AVOCAT N°: "+ id+"" );
-      painter.drawText(3500,1700,"PRENOM Avocat:"+ prenom+"");
-      painter.drawText(3500,2500,"Nom Avocat:"+ nom+"");
+      painter.drawText(2000,1000,"ID_AVOCAT N°= "+id+"" );
+      painter.drawText(2000,1700,"PRENOM Avocat = "+nom+"");
+      painter.drawText(2000,2500,"Nom Avocat = "+prenom+"");
       //painter.drawText(3500,2100,"Numero telephone :  "+numtel+"" );
      // painter.drawText(3500,2500,"Nombre d'audiance: :  "+audiance+"" );
       painter.end();
@@ -166,4 +173,13 @@ void MainWindow::on_pushButton_9_clicked()
     ui->label_id->setText(a.getid());
     a.affichageASC();
 
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    Avocat a;
+    ui->Tabetu->setModel(a.affichageDSC());
+    ui->Tabetu->setStyleSheet("background :#b89d64; font-weight:600;");
+    ui->label_id->setText(a.getid());
+    a.affichageDSC();
 }

@@ -63,6 +63,18 @@ QSqlQueryModel * Avocat:: affichageASC()
 {
 
     QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("SELECT * FROM AVOCATS ORDER BY AUDIANCE_REUSSI ASC");
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_AVOCAT"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRENOM"));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("NOM"));
+
+  return  model;
+
+}
+QSqlQueryModel * Avocat:: affichageDSC()
+{
+
+    QSqlQueryModel * model= new QSqlQueryModel();
         model->setQuery("SELECT * FROM AVOCATS ORDER BY AUDIANCE_REUSSI DESC");
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_AVOCAT"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRENOM"));

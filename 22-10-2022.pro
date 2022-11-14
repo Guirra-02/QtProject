@@ -1,9 +1,12 @@
 QT       += core gui
 QT       += sql
+QT       += printsupport
+QT       += core gui sql network multimedia multimediawidgets charts printsupport widgets axcontainer
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
-QT += printsupport
+
 
 
 # The following define makes your compiler emit warnings if you use
@@ -19,12 +22,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     avocat.cpp \
+    camera.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    smtp.cpp
 
 HEADERS += \
     avocat.h \
-    mainwindow.h
+    camera.h \
+    mainwindow.h \
+    smtp.h
 
 FORMS += \
     mainwindow.ui

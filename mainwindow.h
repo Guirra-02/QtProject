@@ -7,6 +7,8 @@
 #include<QSqlDatabase>
 #include<QSqlQuery>
 #include<QSqlQueryModel>
+#include"camera.h"
+#include<QMediaPlayer>
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -54,9 +56,20 @@ private slots:
 
     void on_pushButton_10_clicked();
 
+    void on_pushButton_11_clicked();
+    void sendMail();
+    void mailSent(QString);
+    void browse();
+
+
 private:
     Ui::MainWindow *ui;
     Avocat a;
+    camera *c;
+    QVideoWidget* vw;
+    QStringList files;
+    QMediaPlayer* player;
+
 
 };
 #endif // MAINWINDOW_H

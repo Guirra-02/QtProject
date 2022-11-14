@@ -84,3 +84,11 @@ QSqlQueryModel * Avocat:: affichageDSC()
 
 }
 
+
+/***********Mailling**************/
+
+
+
+
+
+

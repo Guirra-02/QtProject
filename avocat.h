@@ -6,6 +6,7 @@
 #include<QSqlQueryModel>
 #include<string>
 #include<list>
+
 class Avocat
 {private : QString nom,prenom,id;
 public:
@@ -27,5 +28,6 @@ public:
    bool supprimer(QString);
 
 };
+
 
 #endif // AVOCAT_H

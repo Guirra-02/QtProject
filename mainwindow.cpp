@@ -10,11 +10,30 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QPdfWriter>
+#include"camera.h"
+#include "smtp.h"
+#include <QMainWindow>
+#include <QSortFilterProxyModel>
+#include <QTextTableFormat>
+#include <QStandardItemModel>
+#include <QDialog>
+#include <QFileDialog>
+#include <QMediaPlayer>
+#include <QVideoWidget>
+#include <QDialog>
+#include <QDesktopWidget>
+#include <QSettings>
+#include <QPrinter>
+#include <QTextStream>
+#include <QFile>
+#include <QDataStream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
+{ui->setupUi(this);
+    connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
+    connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
+
 
 }
 
@@ -64,7 +83,7 @@ void MainWindow::on_signin_clicked()
 {QMessageBox msgBox;
     msgBox.setWindowTitle("Something Went Worng");
 msgBox.setStyleSheet("background :#b89d64;border-bottom: 2px solid #b89d64 ; font-weight:600;");
-    if(ui->username->text()=="admin" && ui->password->text()=="admin")
+    if(ui->username->text()=="melek.guirat@esprit.tn" && ui->password->text()=="211JMT3324")
     {ui->stackedWidget->setCurrentIndex(1);
     }
     else {msgBox.setText("user or password is wrong");
@@ -108,7 +127,7 @@ void MainWindow::on_eliminer_clicked()
 {
     Avocat a;
 a.setid(ui->idsupp->text());
-bool test=a.supprimer(a.getid());
+bool test; test=a.supprimer(a.getid());
 ui->Tabetu->setModel(a.afficher());
 
 }
@@ -137,21 +156,16 @@ void MainWindow::on_pushButton_modifier_clicked()
 }
 
 void MainWindow::on_pushButton_8_clicked()
-{QSqlQueryModel *q=new QSqlQueryModel();;
+{
     QPrinter print;
     print.setPrinterName("Printer name ");
     QPrintDialog printdialog(&print,this);
     if (printdialog.exec()==QDialog::Rejected)
      return;
-
     QString id,prenom,nom;
-
-
 id=ui->identifiant->text();
 prenom=ui->prenom->text();
 nom=ui->nom->text();
-//QString numtel=ui->space_description_office->text();
-     // QString audiance=ui->position_description_office->text();
 
       QFile file("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/""Avocats """".pdf");
       QPdfWriter pdf("C:/Users/admin/Documents/qtprojet/22-10-2022/22-10-2022/""Avocats"""".pdf");
@@ -182,4 +196,51 @@ void MainWindow::on_pushButton_10_clicked()
     ui->Tabetu->setStyleSheet("background :#b89d64; font-weight:600;");
     ui->label_id->setText(a.getid());
     a.affichageDSC();
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    c=new camera();
+     c->show();
+}
+
+void   MainWindow::sendMail()
+{
+    Smtp* smtp = new Smtp("admin",ui->mail_pass->text(), "admin");
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    if( !files.isEmpty() )
+        smtp->sendMail("admin", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
+    else
+        smtp->sendMail("admin", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
+}
+void   MainWindow::mailSent(QString status)
+{
+
+    if(status == "Message sent")
+        QMessageBox::warning( nullptr, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+    ui->rcpt->clear();
+    ui->subject->clear();
+    ui->file->clear();
+    ui->msg->clear();
+    ui->mail_pass->clear();
+}
+
+void  MainWindow::browse()
+{
+    files.clear();
+
+    QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+        files = dialog.selectedFiles();
+
+    QString fileListString;
+    foreach(QString file, files)
+        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
+
+    ui->file->setText( fileListString );
+
 }

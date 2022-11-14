@@ -29,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     avocat.h \
+    axwidget.h \
     camera.h \
     mainwindow.h \
     smtp.h

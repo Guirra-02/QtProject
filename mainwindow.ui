@@ -399,10 +399,10 @@ font-size : 13px;
        <widget class="QTabWidget" name="tabWidget">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>0</x>
           <y>0</y>
-          <width>851</width>
-          <height>491</height>
+          <width>861</width>
+          <height>511</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1205,7 +1205,7 @@ color : #b89d64;
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="0">
              <widget class="QStackedWidget" name="camview">
-              <widget class="QWidget" name="camviewPage1" native="true"/>
+              <widget class="QWidget" name="camviewPage1"/>
              </widget>
             </item>
            </layout>
@@ -1354,7 +1354,7 @@ font-weight:800;
            <string>Browse ...</string>
           </property>
          </widget>
-         <widget class="QTextEdit" name="msg">
+         <widget class="QTextBrowser" name="msg">
           <property name="geometry">
            <rect>
             <x>50</x>
@@ -1363,8 +1363,8 @@ font-weight:800;
             <height>291</height>
            </rect>
           </property>
-          <property name="placeholderText">
-           <string>type your message here ...</string>
+          <property name="styleSheet">
+           <string notr="true">background: white;</string>
           </property>
          </widget>
          <widget class="QLineEdit" name="mail_pass">
@@ -1409,6 +1409,34 @@ font-weight:800;
            <string>attachement here</string>
           </property>
          </widget>
+         <zorder>rcpt</zorder>
+         <zorder>sendBtn</zorder>
+         <zorder>browseBtn</zorder>
+         <zorder>mail_pass</zorder>
+         <zorder>subject</zorder>
+         <zorder>file</zorder>
+         <zorder>msg</zorder>
+        </widget>
+        <widget class="QWidget" name="tab_8">
+         <attribute name="title">
+          <string>Position</string>
+         </attribute>
+         <widget class="WebAxWidget" name="WebBrowser">
+          <property name="control" stdset="0">
+           <string>{8856F961-340A-11D0-A96B-00C04FD705A2}</string>
+          </property>
+          <property name="focusPolicy" stdset="0">
+           <enum>Qt::StrongFocus</enum>
+          </property>
+          <property name="geometry" stdset="0">
+           <rect>
+            <x>10</x>
+            <y>0</y>
+            <width>821</width>
+            <height>421</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -1429,6 +1457,18 @@ font-weight:800;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QAxWidget</class>
+   <extends>QWidget</extends>
+   <header>qaxwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WebAxWidget</class>
+   <extends>QAxWidget</extends>
+   <header>webaxwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -67,6 +67,7 @@ QSqlQueryModel * Avocat:: affichageASC()
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_AVOCAT"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRENOM"));
         model->setHeaderData(2, Qt::Horizontal, QObject::tr("NOM"));
+        model->setHeaderData(3,Qt::Horizontal,QObject::tr("AUDIANCE_REUSSI"));
 
   return  model;
 

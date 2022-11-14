@@ -27,12 +27,20 @@
 #include <QTextStream>
 #include <QFile>
 #include <QDataStream>
+#include <ActiveQt/QAxWidget>
+#include "axwidget.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {ui->setupUi(this);
     connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
     connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope,
+                       QCoreApplication::organizationName(), QCoreApplication::applicationName());
+
+ui->WebBrowser->dynamicCall("Navigate(const QString&)", "https://www.google.com/maps/place/Boumhel+El+Bassatine/@36.7306255,10.3019918,15.5z");
+
 
 
 }
@@ -83,7 +91,7 @@ void MainWindow::on_signin_clicked()
 {QMessageBox msgBox;
     msgBox.setWindowTitle("Something Went Worng");
 msgBox.setStyleSheet("background :#b89d64;border-bottom: 2px solid #b89d64 ; font-weight:600;");
-    if(ui->username->text()=="melek.guirat@esprit.tn" && ui->password->text()=="211JMT3324")
+    if(ui->username->text()=="admin" && ui->password->text()=="admin")
     {ui->stackedWidget->setCurrentIndex(1);
     }
     else {msgBox.setText("user or password is wrong");
@@ -204,27 +212,6 @@ void MainWindow::on_pushButton_11_clicked()
      c->show();
 }
 
-void   MainWindow::sendMail()
-{
-    Smtp* smtp = new Smtp("admin",ui->mail_pass->text(), "admin");
-    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
-
-    if( !files.isEmpty() )
-        smtp->sendMail("admin", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
-    else
-        smtp->sendMail("admin", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
-}
-void   MainWindow::mailSent(QString status)
-{
-
-    if(status == "Message sent")
-        QMessageBox::warning( nullptr, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
-    ui->rcpt->clear();
-    ui->subject->clear();
-    ui->file->clear();
-    ui->msg->clear();
-    ui->mail_pass->clear();
-}
 
 void  MainWindow::browse()
 {
@@ -242,5 +229,37 @@ void  MainWindow::browse()
         fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
 
     ui->file->setText( fileListString );
+
+}
+
+
+
+
+void   MainWindow::sendMail()
+{
+    Smtp* smtp = new Smtp("melek.guirat@esprit.tn",ui->mail_pass->text(), "smtp.gmail.com");
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+    if( !files.isEmpty() )
+        smtp->sendMail("melek.guirat@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
+    else
+        smtp->sendMail("melek.guirat@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
+}
+void   MainWindow::mailSent(QString status)
+{
+
+    if(status == "Message sent")
+        QMessageBox::warning( nullptr, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+    ui->rcpt->clear();
+    ui->subject->clear();
+    ui->file->clear();
+    ui->msg->clear();
+    ui->mail_pass->clear();
+}
+
+
+void MainWindow::on_browseBtn_clicked()
+{
+    browse();
 
 }

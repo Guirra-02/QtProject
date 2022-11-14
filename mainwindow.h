@@ -62,6 +62,8 @@ private slots:
     void browse();
 
 
+    void on_browseBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     Avocat a;

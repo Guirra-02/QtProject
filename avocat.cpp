@@ -85,6 +85,26 @@ QSqlQueryModel * Avocat:: affichageDSC()
 
 }
 
+QSqlQueryModel* Avocat ::search_Avocat(QString id)
+{
+
+    QSqlQueryModel* model=new QSqlQueryModel();
+    QSqlQuery query;
+
+
+     model->setQuery("SELECT * FROM AVOCATS WHERE  (ID_AVOCAT like '"+id+"%""')  ");
+
+
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_AVOCAT"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Prenom"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("nom"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("AUDIANCE_REUSSI"));
+     model->setHeaderData(4, Qt::Horizontal, QObject::tr("NUM_TEL"));
+
+    query.exec();
+        return  model;
+}
+
 
 /***********Mailling**************/
 

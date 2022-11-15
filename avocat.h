@@ -25,6 +25,8 @@ public:
    bool modifier(QString);
 
    QSqlQueryModel * afficher();
+  QSqlQueryModel* search_Avocat(QString id);
+
    bool supprimer(QString);
 
 };

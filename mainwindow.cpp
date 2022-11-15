@@ -1,34 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QString>
-#include <QMessageBox>
-#include "avocat.h"
-#include<QSqlQueryModel>
-#include <QtDebug>
-#include <QPainter>
-#include <QFile>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QPdfWriter>
-#include"camera.h"
-#include "smtp.h"
-#include <QMainWindow>
-#include <QSortFilterProxyModel>
-#include <QTextTableFormat>
-#include <QStandardItemModel>
-#include <QDialog>
-#include <QFileDialog>
-#include <QMediaPlayer>
-#include <QVideoWidget>
-#include <QDialog>
-#include <QDesktopWidget>
-#include <QSettings>
-#include <QPrinter>
-#include <QTextStream>
-#include <QFile>
-#include <QDataStream>
-#include <ActiveQt/QAxWidget>
-#include "axwidget.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,7 +14,26 @@ MainWindow::MainWindow(QWidget *parent)
 ui->WebBrowser->dynamicCall("Navigate(const QString&)", "https://www.google.com/maps/place/Boumhel+El+Bassatine/@36.7306255,10.3019918,15.5z");
 
 
+QPieSeries *series=new QPieSeries();
 
+series->append("Audiance reussi",80);
+series->append("Nombres des avocats",30);
+series->append("Nombre d'audiance faite",80);
+
+series->setName("Avocats");
+QPieSlice *slice=series->slices().at(1);
+slice->setExploded(true);
+slice->setLabelVisible(true);
+slice->setPen(QPen(Qt::darkRed));
+slice->setBrush(Qt::yellow);
+QChart *chart=new QChart();
+chart->addSeries(series);
+chart->setTitle("Les avocats selon audiances reussies");
+chart->legend()->setVisible(true);
+chart->legend()->setAlignment(Qt::AlignBottom);
+QChartView *chartview= new QChartView(chart);
+chartview->setRenderHint(QPainter::Antialiasing);
+chartview->setParent(ui->horizontalFrame);
 }
 
 MainWindow::~MainWindow()
@@ -262,4 +253,36 @@ void MainWindow::on_browseBtn_clicked()
 {
     browse();
 
+}
+
+
+/*void MainWindow::on_lineEditch_textChanged(const QString &arg1)
+{QSqlQueryModel * modal= new QSqlQueryModel ();
+    QSqlQuery*qry=new QSqlQuery();
+    QString text=ui->lineEditch->text();
+
+    if(text.isEmpty())
+    {
+        etmp.modifier(ui);
+
+    }
+    else
+    {
+
+      qry->prepare ("SELECT * from AFFAIRE where ( numarch LIKE'%"+text+"%' OR typeCrime LIKE'%"+text+"%' OR jugementFinal LIKE'%"+text+"%' OR lieuCrime LIKE'%"+text+"%') ");
+        qry->exec();
+        modal->setQuery(*qry);
+        ui->tableView->setModel(modal);
+
+}
+
+}*/
+
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    Avocat a;
+   QString id=ui->lineEditch->text();
+    ui->tableView->setModel(a.search_Avocat(id));
+    a.search_Avocat(id);
 }

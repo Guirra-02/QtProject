@@ -9,6 +9,45 @@
 #include<QSqlQueryModel>
 #include"camera.h"
 #include<QMediaPlayer>
+#include <QtCharts>
+#include<QChartView>
+#include<QLineSeries>
+#include <QAbstractTableModel>
+#include <QObject>
+#include<QPieSeries>
+#include <QString>
+#include <QMessageBox>
+#include "avocat.h"
+#include<QSqlQueryModel>
+#include <QtDebug>
+#include <QPainter>
+#include <QFile>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QPdfWriter>
+#include"camera.h"
+#include "smtp.h"
+#include <QMainWindow>
+#include <QSortFilterProxyModel>
+#include <QTextTableFormat>
+#include <QStandardItemModel>
+#include <QDialog>
+#include <QFileDialog>
+#include <QMediaPlayer>
+#include <QVideoWidget>
+#include <QDialog>
+#include <QDesktopWidget>
+#include <QSettings>
+#include <QPrinter>
+#include <QTextStream>
+#include <QFile>
+#include <QDataStream>
+#include <ActiveQt/QAxWidget>
+#include "axwidget.h"
+#include <QAbstractTableModel>
+#include<QAbstractItemModel>
+#include <QObject>
+#include<QPieSlice>
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -64,6 +103,10 @@ private slots:
 
     void on_browseBtn_clicked();
 
+    void on_pushButton_12_clicked();
+
+    void on_lineEditch_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     Avocat a;
@@ -71,6 +114,8 @@ private:
     QVideoWidget* vw;
     QStringList files;
     QMediaPlayer* player;
+    Avocat etmp;
+
 
 
 };

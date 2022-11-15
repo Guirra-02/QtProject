@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1214</width>
+    <height>762</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>39</x>
+      <y>30</y>
+      <width>1151</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page_3">
+     <widget class="QTabWidget" name="tableetu">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>1061</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget::pane { /* The tab widget frame */
+border-top: 2px solid #2a2a2a; 
+border-left: 2px solid #2a2a2a;
+border-right: 2px solid #2a2a2a ; 
+border-bottom: 2px solid #2a2a2a; 
+background: #dcdcdc;
+	
+	
+	border-top-color: rgb(0, 0, 0);
+
+}
+QTabWidget::tab-bar {
+left: 0px; 
+}
+QTabBar::tab {
+background: #dcdcdc;
+border: 2px solid #535353;
+border-bottom-color: #535353; 
+border-top-left-radius: 7px;
+border-top-right-radius: 7px;
+min-width: 80px;
+padding: 8px;
+color: rgb(50, 50, 162);
+	color: rgb(0, 0, 0);
+font-size:12px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QTabBar::tab:selected,QTabBar::tab:hover {
+	
+	
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 127);
+}
+QTabBar::tab:selected {
+border-color: #9B9B9C;
+border-bottom-color: #535353; /
+color: #dcdcdc;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+QTabBar::tab:!selected {
+margin-top: 2px;
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Ajouter une audiance</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>801</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>131</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei UI</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Identifiant :</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="id">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>50</y>
+           <width>241</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>460</x>
+           <y>310</y>
+           <width>151</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Croissant One</family>
+           <pointsize>-1</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+         </property>
+         <property name="text">
+          <string>Ajouter</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>280</y>
+           <width>151</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+</string>
+         </property>
+         <property name="text">
+          <string>Contravention</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_2">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>310</y>
+           <width>151</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+</string>
+         </property>
+         <property name="text">
+          <string>Delit</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_3">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>340</y>
+           <width>151</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+</string>
+         </property>
+         <property name="text">
+          <string>Crime</string>
+         </property>
+        </widget>
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>110</y>
+           <width>241</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+position: absolute;
+width: 320px;
+height: 34px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 15px;
+
+color: #00000 ;
+</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="geometry">
+          <rect>
+           <x>630</x>
+           <y>320</y>
+           <width>151</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;
+position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;</string>
+         </property>
+         <property name="text">
+          <string>Modifier</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>120</y>
+           <width>201</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Date de creation :</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_3">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>230</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft JhengHei</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Type :</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>1051</width>
+           <height>581</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>:/backg/pic.png</pixmap>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_pdf">
+         <property name="geometry">
+          <rect>
+           <x>620</x>
+           <y>260</y>
+           <width>151</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Croissant One</family>
+           <pointsize>-1</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+         </property>
+         <property name="text">
+          <string>PDF</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_insererimage">
+         <property name="geometry">
+          <rect>
+           <x>540</x>
+           <y>10</y>
+           <width>251</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Croissant One</family>
+           <pointsize>-1</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+         </property>
+         <property name="text">
+          <string>Inserer une image </string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label5">
+         <property name="geometry">
+          <rect>
+           <x>520</x>
+           <y>60</y>
+           <width>271</width>
+           <height>171</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <zorder>label_5</zorder>
+        <zorder>label</zorder>
+        <zorder>id</zorder>
+        <zorder>pushButton</zorder>
+        <zorder>radioButton</zorder>
+        <zorder>radioButton_2</zorder>
+        <zorder>radioButton_3</zorder>
+        <zorder>dateEdit</zorder>
+        <zorder>pushButton_3</zorder>
+        <zorder>label_2</zorder>
+        <zorder>label_3</zorder>
+        <zorder>pushButton_pdf</zorder>
+        <zorder>pushButton_insererimage</zorder>
+        <zorder>label5</zorder>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Afficher les audiances</string>
+       </attribute>
+       <widget class="QTableView" name="tab_etudiant">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1061</width>
+          <height>601</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_tri">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>400</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Trier</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_Retour">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>450</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_afficher">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>350</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Afficher</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_recherche">
+        <property name="geometry">
+         <rect>
+          <x>830</x>
+          <y>130</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_rechercher">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>130</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushbuttonExcel">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>500</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Excel</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radioButton_geo">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>30</y>
+          <width>211</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>Geolocalisation</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="widget">
+       <attribute name="title">
+        <string>Supprimer une audiance</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>610</x>
+          <y>280</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>supprimer</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>75</x>
+          <y>140</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 15px;
+position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height:15px;
+
+color: #0000 ;</string>
+        </property>
+        <property name="text">
+         <string>Identifiant :</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="idsupp">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>200</y>
+          <width>251</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1051</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>:/backg/pic.png</pixmap>
+        </property>
+       </widget>
+       <zorder>label_6</zorder>
+       <zorder>pushButton_2</zorder>
+       <zorder>label_4</zorder>
+       <zorder>idsupp</zorder>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>statistique</string>
+       </attribute>
+       <widget class="QPushButton" name="stat">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>20</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>stat</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>80</y>
+          <width>641</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>QR Code</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButton_QRcode">
+        <property name="geometry">
+         <rect>
+          <x>890</x>
+          <y>30</y>
+          <width>151</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Croissant One</family>
+          <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">position: absolute;
+width: 326px;
+height: 38px;
+
+font-family: 'Croissant One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height:30px;
+
+color: #F40F99 ;
+position: absolute;
+width: 406px;
+height: 72px;
+
+background: #FFCDEB;
+border-radius: 16px;</string>
+        </property>
+        <property name="text">
+         <string>QR Code</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_QR">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>20</y>
+          <width>701</width>
+          <height>571</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1214</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

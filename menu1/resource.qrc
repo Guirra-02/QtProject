@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>copy.png</file>
+        <file>cut.png</file>
+        <file>delete.png</file>
+        <file>open.png</file>
+        <file>paste.png</file>
+        <file>Redo-icon.png</file>
+        <file>Undo-icon.png</file>
+        <file>upload.png</file>
+        <file>uploadfile.png</file>
+        <file>newfile.jfif</file>
+        <file>nf.webp</file>
+        <file>save.png</file>
+        <file>upload 1.png</file>
+        <file>uploadfile 1.png</file>
+        <file>111.png</file>
+    </qresource>
+</RCC>

@@ -3,10 +3,19 @@ QT       += sql
 QT       += printsupport
 QT       += core gui sql network multimedia multimediawidgets charts printsupport widgets axcontainer
 QT       += charts
+QT       += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
 
+INCLUDEPATH += /usr/local/include
+LIBS += -L"/usr/local/lib"
+LIBS += -IMFRC522.h
+
+QT += nfc
+
+find_package(Qt6 REQUIRED COMPONENTS Nfc)
+target_link_libraries(mytarget PRIVATE Qt5::Nfc)
 
 
 # The following define makes your compiler emit warnings if you use
@@ -21,17 +30,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     avocat.cpp \
     camera.cpp \
     main.cpp \
     mainwindow.cpp \
+    rfid.cpp \
     smtp.cpp
 
 HEADERS += \
+    arduino.h \
     avocat.h \
     axwidget.h \
     camera.h \
     mainwindow.h \
+    rfid.h \
     smtp.h
 
 FORMS += \

@@ -48,6 +48,8 @@
 #include<QAbstractItemModel>
 #include <QObject>
 #include<QPieSlice>
+#include "arduino.h"
+
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -63,6 +65,8 @@ public:
     ~MainWindow();
 
 private slots:
+    void getCardUid();
+    void authRFID();
     void on_lineEdit_textChanged(const QString &arg1);
 
     void on_lineEdit_editingFinished();
@@ -115,7 +119,8 @@ private:
     QStringList files;
     QMediaPlayer* player;
     Avocat etmp;
-
+    Arduino A;
+   QString test1;
 
 
 };

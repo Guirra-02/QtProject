@@ -457,7 +457,7 @@ QMessageBox QLabel {
 </string>
         </property>
         <property name="currentIndex">
-         <number>9</number>
+         <number>7</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -1419,7 +1419,7 @@ font-weight:800;
         </widget>
         <widget class="QWidget" name="tab_8">
          <attribute name="title">
-          <string>Position</string>
+          <string>enregistrement</string>
          </attribute>
          <widget class="WebAxWidget" name="WebBrowser">
           <property name="control" stdset="0">

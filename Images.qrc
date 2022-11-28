@@ -3,4 +3,7 @@
         <file>Images/caaa.PNG</file>
         <file>Images/back.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>rfid.qml</file>
+    </qresource>
 </RCC>

@@ -5,7 +5,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{ui->setupUi(this);
+{
+            ui->setupUi(this);
     connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
     connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
     QSettings settings(QSettings::IniFormat, QSettings::UserScope,
@@ -34,6 +35,37 @@ chart->legend()->setAlignment(Qt::AlignBottom);
 QChartView *chartview= new QChartView(chart);
 chartview->setRenderHint(QPainter::Antialiasing);
 chartview->setParent(ui->horizontalFrame);
+int ret=A.connect_arduino(); // lancer la connexion à arduino
+ switch(ret){
+case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+    break;
+case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+   break;
+case(-1):qDebug() << "arduino is not available";
+}
+ QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(getCardUid())); // permet de lancer
+ //le slot update_label suite à la reception du signal readyRead (reception des données).
+
+// QByteArray x=A.read_from_arduino();QMessageBox msgBox;
+
+//            qDebug()<<test1.left(test1.length()-2)<<endl;
+
+//               test1 = x;
+//               qDebug()<<test1.left(test1.length()-2)<<endl;
+//            if(x=="1")
+//                       {msgBox.setText("data received with success");
+//                   msgBox.exec();
+//                 ui->stackedWidget->setCurrentIndex(1);
+//              }
+//        if (test1=="163232226145")
+//        {hide();
+//            MainWindow *m= new MainWindow(this);
+//            m->ui->stackedWidget->setCurrentIndex(1);
+//            m->show();
+
+//        }
+
+
 }
 
 MainWindow::~MainWindow()
@@ -66,6 +98,29 @@ void MainWindow::on_password_editingFinished()
 
 }
 
+void MainWindow::getCardUid()
+{QByteArray x=A.read_from_arduino();QMessageBox msgBox;
+
+    qDebug()<<x<<endl;
+    if(x=="163 232 226 145\r\n")
+               {msgBox.setText("data received with success");
+           msgBox.exec();
+         ui->stackedWidget->setCurrentIndex(1);
+      }
+        }
+void MainWindow::authRFID()
+{QByteArray x=A.read_from_arduino();
+if (test1=="163232226145")
+{hide();
+    MainWindow *m= new MainWindow(this);
+    m->ui->stackedWidget->setCurrentIndex(1);
+    m->show();
+
+}
+
+}
+
+
 
 
 void MainWindow::on_signup_clicked()
@@ -80,11 +135,18 @@ void MainWindow::on_signup_2_clicked()
 
 void MainWindow::on_signin_clicked()
 {QMessageBox msgBox;
+    QByteArray x=A.read_from_arduino();
     msgBox.setWindowTitle("Something Went Worng");
 msgBox.setStyleSheet("background :#b89d64;border-bottom: 2px solid #b89d64 ; font-weight:600;");
     if(ui->username->text()=="admin" && ui->password->text()=="admin")
     {ui->stackedWidget->setCurrentIndex(1);
     }
+//    else if(x=="1")
+//            {msgBox.setText("data received with success");
+//        msgBox.exec();
+//       ui->stackedWidget->setCurrentIndex(1);
+//    }
+
     else {msgBox.setText("user or password is wrong");
     msgBox.exec();}
 
@@ -228,7 +290,7 @@ void  MainWindow::browse()
 
 void   MainWindow::sendMail()
 {
-    Smtp* smtp = new Smtp("melek.guirat@esprit.tn",ui->mail_pass->text(), "smtp.gmail.com");
+    Smtp* smtp = new Smtp("melek.guirat@esprit.tn",ui->mail_pass->text(), "211JMT3324");
     connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
 
     if( !files.isEmpty() )

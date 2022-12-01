@@ -90,9 +90,6 @@ void MainWindow::getCardUid()
       }
         }
 
-
-
-
 void MainWindow::on_signup_clicked()
 {
     ui->stackedWidget_2->setCurrentIndex(1);

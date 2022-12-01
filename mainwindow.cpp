@@ -12,29 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     QSettings settings(QSettings::IniFormat, QSettings::UserScope,
                        QCoreApplication::organizationName(), QCoreApplication::applicationName());
 
-ui->WebBrowser->dynamicCall("Navigate(const QString&)", "https://www.google.com/maps/place/Boumhel+El+Bassatine/@36.7306255,10.3019918,15.5z");
 
-
-QPieSeries *series=new QPieSeries();
-
-series->append("Audiance reussi",80);
-series->append("Nombres des avocats",30);
-series->append("Nombre d'audiance faite",80);
-
-series->setName("Avocats");
-QPieSlice *slice=series->slices().at(1);
-slice->setExploded(true);
-slice->setLabelVisible(true);
-slice->setPen(QPen(Qt::darkRed));
-slice->setBrush(Qt::yellow);
-QChart *chart=new QChart();
-chart->addSeries(series);
-chart->setTitle("Les avocats selon audiances reussies");
-chart->legend()->setVisible(true);
-chart->legend()->setAlignment(Qt::AlignBottom);
-QChartView *chartview= new QChartView(chart);
-chartview->setRenderHint(QPainter::Antialiasing);
-chartview->setParent(ui->horizontalFrame);
 int ret=A.connect_arduino(); // lancer la connexion à arduino
  switch(ret){
 case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
@@ -44,27 +22,31 @@ case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino
 case(-1):qDebug() << "arduino is not available";
 }
  QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(getCardUid())); // permet de lancer
- //le slot update_label suite à la reception du signal readyRead (reception des données).
 
-// QByteArray x=A.read_from_arduino();QMessageBox msgBox;
 
-//            qDebug()<<test1.left(test1.length()-2)<<endl;
+}
+void MainWindow::statfn()
+{
+    QPieSeries *series=new QPieSeries();
 
-//               test1 = x;
-//               qDebug()<<test1.left(test1.length()-2)<<endl;
-//            if(x=="1")
-//                       {msgBox.setText("data received with success");
-//                   msgBox.exec();
-//                 ui->stackedWidget->setCurrentIndex(1);
-//              }
-//        if (test1=="163232226145")
-//        {hide();
-//            MainWindow *m= new MainWindow(this);
-//            m->ui->stackedWidget->setCurrentIndex(1);
-//            m->show();
+    series->append("Audiance reussi",80);
+    series->append("Nombres des avocats",30);
+    series->append("Nombre d'audiance faite",80);
 
-//        }
-
+    series->setName("Avocats");
+    QPieSlice *slice=series->slices().at(1);
+    slice->setExploded(true);
+    slice->setLabelVisible(true);
+    slice->setPen(QPen(Qt::darkRed));
+    slice->setBrush(Qt::yellow);
+    QChart *chart=new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Les avocats selon audiances reussies");
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    QChartView *chartview= new QChartView(chart);
+    chartview->setRenderHint(QPainter::Antialiasing);
+    chartview->setParent(ui->horizontalFrame);
 
 }
 
@@ -79,14 +61,14 @@ void MainWindow::on_username_editingFinished()
 ui->username->setStyleSheet("background:transparent;border-radius:14px;border:none;color:#b89d64;border-bottom:1px solid #b89d64;");
 }
 
-void MainWindow::on_username_textChanged(const QString &arg1)
+void MainWindow::on_username_textChanged( )
 {
     ui->username->setStyleSheet("border-bottom: 2px solid #b89d64 ;color:#b89d64;font-weight:600;border-radius:0px;");
 
 }
 
 
-void MainWindow::on_password_textChanged(const QString &arg1)
+void MainWindow::on_password_textChanged( )
 {
 ui->password->setStyleSheet("border-bottom: 2px solid #b89d64 ;color:#b89d64;font-weight:600;border-radius:0px;");
 }
@@ -103,22 +85,10 @@ void MainWindow::getCardUid()
 
     qDebug()<<x<<endl;
     if(x=="163 232 226 145\r\n")
-               {msgBox.setText("data received with success");
-           msgBox.exec();
+               {
          ui->stackedWidget->setCurrentIndex(1);
       }
         }
-void MainWindow::authRFID()
-{QByteArray x=A.read_from_arduino();
-if (test1=="163232226145")
-{hide();
-    MainWindow *m= new MainWindow(this);
-    m->ui->stackedWidget->setCurrentIndex(1);
-    m->show();
-
-}
-
-}
 
 
 
@@ -141,12 +111,6 @@ msgBox.setStyleSheet("background :#b89d64;border-bottom: 2px solid #b89d64 ; fon
     if(ui->username->text()=="admin" && ui->password->text()=="admin")
     {ui->stackedWidget->setCurrentIndex(1);
     }
-//    else if(x=="1")
-//            {msgBox.setText("data received with success");
-//        msgBox.exec();
-//       ui->stackedWidget->setCurrentIndex(1);
-//    }
-
     else {msgBox.setText("user or password is wrong");
     msgBox.exec();}
 
@@ -155,24 +119,14 @@ msgBox.setStyleSheet("background :#b89d64;border-bottom: 2px solid #b89d64 ; fon
 
 void MainWindow::on_pushButton_ajouter_clicked()
 {QMessageBox msgBox;
-    bool test;
-    QString id=ui->identifiant->text();
-            QString nom=ui->nom->text();
-    QString prenom=ui->prenom->text();
+QString id=ui->identifiant->text();
+QString nom=ui->nom->text();
+QString prenom=ui->prenom->text();
 Avocat a(id,nom,prenom);
-test=a.ajouter();
-
-
-    //msgBox.setText("id existant");
-
-
-//msgBox.setText("Ajout fait ");
+    a.ajouter();
     QMessageBox::information(nullptr,"ajout","ajout faiiit");
-
-
-ui->Tabetu->setModel(a.afficher());
-QMessageBox msg;
-
+    ui->Tabetu->setModel(a.afficher());
+    QMessageBox msg;
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -187,8 +141,8 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_eliminer_clicked()
 {
     Avocat a;
-a.setid(ui->idsupp->text());
-bool test; test=a.supprimer(a.getid());
+a.setid(ui->identifiant->text());
+a.supprimer(a.getid());
 ui->Tabetu->setModel(a.afficher());
 
 }
@@ -196,24 +150,30 @@ ui->Tabetu->setModel(a.afficher());
 void MainWindow::on_pushButton_modifier_clicked()
 {
     {QMessageBox msgBox; bool test;
-        QString id=ui->lineEdit_idup->text();
-                QString nom=ui->nom_23->text();
-        QString prenom=ui->prenom_24->text();
+        QString id=ui->identifiant->text();
+        QString nom=ui->nom->text();
+        QString prenom=ui->prenom->text();
     Avocat a(id,nom,prenom);
     test=a.modifier(id);
     if(test==false)
     {
-        //msgBox.setText("id existant");
+
         QMessageBox::information(nullptr,"ajout","non effectue");
     }
-    else {//msgBox.setText("Ajout fait ");
+    else {
         QMessageBox::information(nullptr,"modification","mdification faiiiteee");
-
     }
     ui->Tabetu->setModel(a.afficher());
     QMessageBox msg;
 
     }
+}
+void MainWindow::on_pushButton_12_clicked()
+{
+    Avocat a;
+   QString id=ui->identifiant->text();
+    ui->tableView->setModel(a.search_Avocat(id));
+    a.search_Avocat(id);
 }
 
 void MainWindow::on_pushButton_8_clicked()
@@ -317,34 +277,3 @@ void MainWindow::on_browseBtn_clicked()
 
 }
 
-
-/*void MainWindow::on_lineEditch_textChanged(const QString &arg1)
-{QSqlQueryModel * modal= new QSqlQueryModel ();
-    QSqlQuery*qry=new QSqlQuery();
-    QString text=ui->lineEditch->text();
-
-    if(text.isEmpty())
-    {
-        etmp.modifier(ui);
-
-    }
-    else
-    {
-
-      qry->prepare ("SELECT * from AFFAIRE where ( numarch LIKE'%"+text+"%' OR typeCrime LIKE'%"+text+"%' OR jugementFinal LIKE'%"+text+"%' OR lieuCrime LIKE'%"+text+"%') ");
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->tableView->setModel(modal);
-
-}
-
-}*/
-
-
-void MainWindow::on_pushButton_12_clicked()
-{
-    Avocat a;
-   QString id=ui->lineEditch->text();
-    ui->tableView->setModel(a.search_Avocat(id));
-    a.search_Avocat(id);
-}

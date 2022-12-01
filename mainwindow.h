@@ -63,21 +63,22 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void statfn();
 
 private slots:
     void getCardUid();
-    void authRFID();
-    void on_lineEdit_textChanged(const QString &arg1);
+    //void authRFID();
 
-    void on_lineEdit_editingFinished();
 
-    void on_password_textChanged(const QString &arg1);
+
+
+    void on_password_textChanged( );
 
     void on_password_editingFinished();
 
     void on_username_editingFinished();
 
-    void on_username_textChanged(const QString &arg1);
+    void on_username_textChanged( );
 
     void on_signup_clicked();
 
@@ -109,7 +110,7 @@ private slots:
 
     void on_pushButton_12_clicked();
 
-    void on_lineEditch_textChanged(const QString &arg1);
+
 
 private:
     Ui::MainWindow *ui;

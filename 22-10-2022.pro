@@ -1,9 +1,8 @@
-QT       += core gui
-QT       += sql
-QT       += printsupport
-QT       += core gui sql network multimedia multimediawidgets charts printsupport widgets axcontainer
-QT       += charts
-QT       += serialport
+
+
+
+QT       += core gui printsupport sql charts network multimedia multimediawidgets charts printsupport widgets axcontainer serialport
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -12,10 +11,9 @@ INCLUDEPATH += /usr/local/include
 LIBS += -L"/usr/local/lib"
 LIBS += -IMFRC522.h
 
-QT += nfc
 
-find_package(Qt6 REQUIRED COMPONENTS Nfc)
-target_link_libraries(mytarget PRIVATE Qt5::Nfc)
+
+
 
 
 # The following define makes your compiler emit warnings if you use
